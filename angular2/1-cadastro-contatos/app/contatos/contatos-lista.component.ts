@@ -1,4 +1,6 @@
 import { Component } from "@angular/core";
+import { Contato } from "./contato.model";
+import { CONTATOS } from "./contatos-mock";
 
 
 @Component({
@@ -6,4 +8,6 @@ import { Component } from "@angular/core";
     selector: 'contatos-lista',
     templateUrl: 'contatos-lista.component.html'
 })
-export class ContatosListaComponent {}
+export class ContatosListaComponent {
+    contatos: Contato[] = CONTATOS;
+}
