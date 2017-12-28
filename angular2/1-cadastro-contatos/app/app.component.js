@@ -15,7 +15,7 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "\n        <h1>My Firts Angular 2 App</h1>\n\n        <button class=\"btn btn-success\">Hello Bootstrap</button>\n    "
+            template: "\n        <h1>My Firts Angular 2 App</h1>\n\n        <contatos-lista></contatos-lista>\n    "
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
