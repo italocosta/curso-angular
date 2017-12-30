@@ -13,15 +13,19 @@
                         <th>Nome</th>
                         <th>Email</th>
                         <th>Telefone</th>
+                        <th>Editar</th>
                         <th>Deletar</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let c of contatos" [routerLink]="['/contato/save' , c.id]">
+                    <tr *ngFor="let c of contatos" >
                         <td>{{ c.id }}</td>
                         <td>{{ c.nome }}</td>
                         <td>{{ c.email }}</td>
                         <td>{{ c.telefone }}</td>
+                        <td>
+                            <button [routerLink]="['/contato/save' , c.id]" class="btn btn-primary">Editar</button>
+                        </td>
                         <td>
                             <button class="btn btn-danger">Deletar</button>
                         </td>
