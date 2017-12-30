@@ -11,7 +11,7 @@ import { Contato } from "./contato.model";
     templateUrl: 'contato-detalhe.component.html'
 
 })
-export class ContatoDetalheComponent implements OnInit{
+export class ContatoDetalheComponent implements OnInit {
 
     contato: Contato;
 
@@ -19,18 +19,20 @@ export class ContatoDetalheComponent implements OnInit{
         private contatoService: ContatoService,
         private route: ActivatedRoute,
         private location: Location
-    ){}
+    ) { }
 
     ngOnInit(): void {
-        this.contato = new Contato(0,'','','');
+        this.contato = new Contato(0, '', '', '');
         this.route.params.forEach((params: Params) => {
             let id: number = +params['id'];
-            console.log(id);
-            this.contatoService.getContato(id)
-                .then((contato: Contato) => {
-                    this.contato = contato;
-                });
+            if (id) {
+                console.log(id);
+                this.contatoService.getContato(id)
+                    .then((contato: Contato) => {
+                        this.contato = contato;
+                    });
+            }
         })
     }
-    
+
 }
