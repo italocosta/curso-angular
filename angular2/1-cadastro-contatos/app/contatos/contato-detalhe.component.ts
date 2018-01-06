@@ -8,7 +8,10 @@ import { Contato } from "./contato.model";
 @Component({
     moduleId: module.id,
     selector: 'contato-detalhe',
-    templateUrl: 'contato-detalhe.component.html'
+    templateUrl: 'contato-detalhe.component.html',
+    styleUrls: [
+        'contato-detalhe.component.css'
+    ]
 
 })
 export class ContatoDetalheComponent implements OnInit {
