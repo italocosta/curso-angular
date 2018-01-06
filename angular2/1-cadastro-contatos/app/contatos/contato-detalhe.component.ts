@@ -8,15 +8,13 @@ import { Contato } from "./contato.model";
 @Component({
     moduleId: module.id,
     selector: 'contato-detalhe',
-    templateUrl: 'contato-detalhe.component.html',
-    styleUrls: [
-        'contato-detalhe.component.css'
-    ]
+    templateUrl: 'contato-detalhe.component.html'
 
 })
 export class ContatoDetalheComponent implements OnInit {
 
     contato: Contato;
+    private isNew: boolean = true;
 
     constructor(
         private contatoService: ContatoService,
@@ -29,13 +27,26 @@ export class ContatoDetalheComponent implements OnInit {
         this.route.params.forEach((params: Params) => {
             let id: number = +params['id'];
             if (id) {
-                console.log(id);
+                this.isNew = false;
                 this.contatoService.getContato(id)
                     .then((contato: Contato) => {
                         this.contato = contato;
                     });
             }
         })
+    }
+
+    getFormGroupClass(isDirty: boolean): {} {
+        return {
+            'form-group' : true,
+            'was-validated': isDirty
+        }
+    }
+
+    onSubmit(): void{
+        if(this.isNew){
+            console.log("novo");
+        }
     }
 
 }

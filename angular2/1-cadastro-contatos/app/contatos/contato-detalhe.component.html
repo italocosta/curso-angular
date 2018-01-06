@@ -2,26 +2,30 @@
 
     <h2>Salvar contato</h2>
 
-    <form #contatoForm="ngForm">
-        <div class="form-group">
+    <form #contatoForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+        <div [ngClass]="getFormGroupClass(nome.dirty)">
             <label for="nome">Nome</label>
             <input type="text" class="form-control" placeholder="Digite o nome" required
-                name="nome"
-                [(ngModel)]="contato.nome"
-                #spy>
-                <div class="alert alert-info">{{ spy.className }}</div>
+            name="nome"
+            #nome="ngModel"
+            [(ngModel)]="contato.nome">
+            <div class="invalid-feedback">O campo é obrigatório</div>
         </div>
-        <div class="form-group">
-            <label for="email">Nome</label>
+        <div [ngClass]="getFormGroupClass(email.dirty)">
+            <label for="email">Email</label>
             <input type="email" class="form-control" placeholder="Digite o e-mail" required
-                name="email"
-                [(ngModel)]="contato.email">
+            name="email"
+            #email="ngModel"
+            [(ngModel)]="contato.email">
+            <div class="invalid-feedback">O campo é obrigatório no formato email@dominio</div>
         </div>
-        <div class="form-group">
-            <label for="telefone">Nome</label>
+        <div [ngClass]="getFormGroupClass(telefone.dirty)">
+            <label for="telefone">Telefone</label>
             <input type="text" class="form-control" placeholder="Digite o telefone" required
-                name="telefone"
-                [(ngModel)]="contato.telefone   ">
+            name="telefone"
+            #telefone="ngModel"
+            [(ngModel)]="contato.telefone">
+            <div class="invalid-feedback">O campo é obrigatório</div>
         </div>
         <button type="submit" class="btn btn-success" [disabled]="!contatoForm.form.valid">Salvar</button>
         <a routerLink="/" class="btn btn-secondary">Voltar</a>
